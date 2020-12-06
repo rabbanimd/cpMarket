@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function validate()
+        {
+            var p1 = document.getElementById('p1').value;
+            var p2 = document.getElementById('p2').value;
+            if(p1.length<5){
+                document.getElementById("message").innerHTML = "Password must be more than 5 characters";
+                return false;
+            }
+            if(p1==p2){
+                return true;
+            }
+            document.getElementById("message").innerHTML = "Password do not match !";
+            return false;
+        }
+        function check()
+        {
+            var p1 = document.getElementById('lguser').value;
+            var p2 = document.getElementById('lgpass').value;
+            if(p1.length>0 && p2.length>0)
+                return true;
+            else
+            {
+
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<header>
+    <a href="/" style="text-decoration: none;"><h3><span style="font-size: 45px;color: crimson" >CP</span> Market</h3></a></header>
+</header>
+    <div class="form">
+        <h3>Login</h3>
+        <form id="login-form" method="post" action="/login">
+            <input type="text" name="username" id="lguser" placeholder="username or e-mail" required>
+            <input type="password" name="password" id="lgpass" placeholder="password" required><br>
+            <input type="checkbox" name="remember-me" id="remember-me" placeholder="remember me">
+            <label for="remember-me">Remember me</label><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div class="form">
+        <h3>Sign up</h3>
+        <form id="signup-form" method="post" action="/signup" onsubmit="return validate()">
+            <input type="text" name="username" placeholder="Enter username/e-mail" value="" required><br>
+            <input type="password" name="pass" id="p1" placeholder="Enter password" value="" required><br>
+            <input type="password" id="p2" placeholder="Re-Enter password"required><br>
+            <span style="color: red" id="message"></span>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+</body>
+</html>
